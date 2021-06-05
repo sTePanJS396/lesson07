@@ -18,6 +18,8 @@ let appData = {
     deposit: false,
     mission: 500000,
     period: 5,
+    budgetMonth: 0,
+    expensesMonth: 0,
     asking: function () {
         let addExpenses;
         let deposit;
@@ -29,33 +31,28 @@ let appData = {
     budget: money,
     budgetDay: function() {
         return Math.floor(appData.getBudget() / 30);
-    }
-    ,
-    budgetMonth: 0,
-    expensesMonth: 0,
+    },
     expMonth: function () {
         let i = 0;
-        let expenses;
+        let exp;
         let sum;
         while (i < 1) {
             do {
-                expenses = prompt('Назови обязательную статью расходов.');
+                exp = prompt('Назови обязательную статью расходов.');
                 sum = +prompt('Во сколько это обойдется?');
-                appData.expenses[expenses] = sum;
+                appData.expenses[exp] = sum;
                 i++;
             } while (isNaN(sum) || sum === '' || sum === null);
         }
-        
-    },
-    expensMonth: function getExpensesMonth() {
-        appData.expMonth();
         let f;
         for (let key in appData.expenses) {
             f = appData.expenses[key];
             
         }
         return appData.expensesMonth = f;
-    }, 
+        // Вернется значение расходов за месяц
+    },
+
     getBudget: function() {
         return appData.budget - appData.expensesMonth;
     },
@@ -84,7 +81,7 @@ let appData = {
 
 appData.asking();
 
-appData.expensMonth();
+appData.expMonth();
 
 appData.getBudget();
 
@@ -112,14 +109,3 @@ console.log('Расходы на месяц составили: ' + appData.expe
 for (let key in appData) {
     console.log( "Ключ: " + key + " значение: " + appData[key] );
 }
-
-/* 
-Что сделанно:
-1) Удалить все не используемые переменные вне appData - выполнено. ТЗ: "Все остальное почистить в программе у нас всего две переменных money и appData" 
-
-3) Функции getExpensesMonth, getAccumulatedMonth, getTargetMonth, getStatusIncome - сделать методами объекта AppData - ОК, без проблем :)
-
-4) У пользователя нужно спросить дважды, а не четырежды о статье расходов и их стоимости - сделанно!
-
-5) Куда пропала проверка на введенное значение? - Так вот же: (см. Метод exMonth)
-*/
