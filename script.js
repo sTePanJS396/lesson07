@@ -20,6 +20,7 @@ let appData = {
     period: 5,
     budgetMonth: 0,
     expensesMonth: 0,
+    budget: money,
     asking: function () {
         let addExpenses;
         let deposit;
@@ -28,7 +29,6 @@ let appData = {
         appData.deposit = confirm('У тебя есть депозит в банке? Нажми OK, если есть.');
     },
 
-    budget: money,
     budgetDay: function() {
         return Math.floor(appData.getBudget() / 30);
     },
