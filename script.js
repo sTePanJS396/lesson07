@@ -18,9 +18,9 @@ let appData = {
     deposit: false,
     mission: 500000,
     period: 5,
+    budget: money,
     budgetMonth: 0,
     expensesMonth: 0,
-    budget: money,
     asking: function () {
         let addExpenses;
         let deposit;
@@ -28,7 +28,6 @@ let appData = {
         appData.addExpenses = addExpenses.toLocaleLowerCase().split(', ');
         appData.deposit = confirm('У тебя есть депозит в банке? Нажми OK, если есть.');
     },
-
     budgetDay: function() {
         return Math.floor(appData.getBudget() / 30);
     },
@@ -40,17 +39,11 @@ let appData = {
             do {
                 exp = prompt('Назови обязательную статью расходов.');
                 sum = +prompt('Во сколько это обойдется?');
-                appData.expenses[exp] = sum;
                 i++;
             } while (isNaN(sum) || sum === '' || sum === null);
+            appData.expenses[exp] = sum;
         }
-        let f;
-        for (let key in appData.expenses) {
-            f = appData.expenses[key];
-            
-        }
-        return appData.expensesMonth = f;
-        // Вернется значение расходов за месяц
+        return appData.expensesMonth = appData.expenses[exp];
     },
 
     getBudget: function() {
