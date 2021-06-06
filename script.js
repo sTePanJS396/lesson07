@@ -35,7 +35,7 @@ let appData = {
         let i = 0;
         let exp;
         let sum;
-        while (i < 1) {
+        while (i < 2) {
             do {
                 exp = prompt('Назови обязательную статью расходов.');
                 sum = +prompt('Во сколько это обойдется?');
@@ -43,7 +43,12 @@ let appData = {
             } while (isNaN(sum) || sum === '' || sum === null);
             appData.expenses[exp] = sum;
         }
-        return appData.expensesMonth = appData.expenses[exp];
+        for (let key in appData.expenses) {
+            let f, g;
+            f = appData.expenses[key];
+            g = appData.expenses[key];
+            return appData.expensesMonth = f + g;
+        }
     },
 
     getBudget: function() {
