@@ -86,19 +86,15 @@ appData.expMonth();
 
 appData.getBudget();
 
-appData.getTargetMonth(appData.getBudget(), appData.mission);
+appData.getTargetMonth();
 
 appData.budgetDay = appData.getBudget();
 
-appData.getStatusIncome(appData.budgetDay);
+appData.getStatusIncome();
 
-
-console.log(appData.expenses);
-
-console.log(appData.getStatusIncome(appData.budgetDay));
 
 if (appData.getTargetMonth() > 0) {
-    console.log('Цель будет достигнута через... ' + appData.getTargetMonth(appData.getBudget(), appData.mission));
+    console.log('Цель будет достигнута через... ' + appData.getTargetMonth());
 } else {
     console.log('Цель не будет достигнута :(');
 }
