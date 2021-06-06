@@ -1,10 +1,14 @@
-
 let money;
+// let isNumber = function(n) {
+//     return isNaN(parseFloat(n)) && isFinite(n)
+// };
+
 function start() {
     do {
         money = prompt('Какой твой месячный доход?');
     } while(isNaN(money) || money === '' || money === null);    
 };
+
 
 start();
 
@@ -24,25 +28,25 @@ let appData = {
     asking: function () {
         let addExpenses;
         let deposit;
+        let i = 0;
+        let exp;
+        let sum;
         addExpenses = prompt('Перечисли возможные расходы за определенный период через запятую');
         appData.addExpenses = addExpenses.toLocaleLowerCase().split(', ');
         appData.deposit = confirm('У тебя есть депозит в банке? Нажми OK, если есть.');
+        while (i < 2) {
+            exp = prompt('Назови обязательную статью расходов.');
+            do {
+                sum = prompt('Во сколько это обойдется?');
+            } while (isNaN(sum) || sum.trim() === '' || sum === null);
+            i++;
+            appData.expenses[exp] = Number(sum);
+        }
     },
     budgetDay: function() {
         return Math.floor(appData.getBudget() / 30);
     },
     expMonth: function () {
-        let i = 0;
-        let exp;
-        let sum;
-        while (i < 2) {
-            do {
-                exp = prompt('Назови обязательную статью расходов.');
-                sum = +prompt('Во сколько это обойдется?');
-                i++;
-            } while (isNaN(sum) || sum === '' || sum === null);
-            appData.expenses[exp] = sum;
-        }
         for (let key in appData.expenses) {
             return appData.expensesMonth = appData.expenses[key] + appData.expenses[key];
         }
