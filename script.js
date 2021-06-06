@@ -47,9 +47,11 @@ let appData = {
         return Math.floor(appData.getBudget() / 30);
     },
     expMonth: function () {
+        let res = 0;
         for (let key in appData.expenses) {
-            return appData.expensesMonth = appData.expenses[key] + appData.expenses[key];
+            res += appData.expenses[key]
         }
+        return appData.expensesMonth = res;
     },
 
     getBudget: function() {
