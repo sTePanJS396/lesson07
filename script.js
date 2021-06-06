@@ -44,10 +44,7 @@ let appData = {
             appData.expenses[exp] = sum;
         }
         for (let key in appData.expenses) {
-            let f, g;
-            f = appData.expenses[key];
-            g = appData.expenses[key];
-            return appData.expensesMonth = f + g;
+            return appData.expensesMonth = appData.expenses[key] + appData.expenses[key];
         }
     },
 
